@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class DeckOfCards {
   private final char[] suit = {'S', 'H', 'D', 'C'};
-  ArrayList<String> cards;
+  ArrayList<PlayingCard> cards;
 
   public DeckOfCards() {
     fillCardStock();
@@ -13,16 +13,16 @@ public class DeckOfCards {
 
   public void fillCardStock(){
     cards = new ArrayList<>();
-    for (char type : suit) {
-      for (int i = 1; i < 14; i++){
-        cards.add(String.valueOf(type+i));
+    for (char s : suit) {
+      for (int r = 1; r < 14; r++){
+        cards.add(new PlayingCard(s, r));
       }
     }
   }
 
-  public ArrayList<String> dealHand(int n){
+  public HandOfCards dealHand(int n){
     fillCardStock();
-    ArrayList<String> hand = new ArrayList<>();
+    HandOfCards hand = new HandOfCards();
     Random rand = new Random();
     for (int i = 0; i < n; i++) {
       int idx = rand.nextInt(cards.size());
