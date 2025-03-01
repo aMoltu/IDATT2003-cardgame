@@ -29,4 +29,18 @@ public class HandOfCards extends ArrayList<PlayingCard> {
     }
     return false;
   }
+
+  public String getAsString() {
+    StringBuilder sb = new StringBuilder();
+    boolean first = true;
+    for (PlayingCard card : this) {
+      if (!first) {
+        sb.append(", ");
+      } else {
+        first = false;
+      }
+      sb.append(card.getAsString());
+    }
+    return sb.toString();
+  }
 }
